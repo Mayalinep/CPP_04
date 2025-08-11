@@ -1,0 +1,17 @@
+#pragma once
+
+#include "Animal.hpp"
+
+class Dog : public Animal{
+    private:
+    
+
+    public :
+        Dog();
+        Dog(const std::string &type);
+        Dog(const Dog &rhs);
+        Dog &operator=(const Dog &rhs);
+        std::string getType() const;
+        void makeSound() const;
+        ~Dog();
+};
