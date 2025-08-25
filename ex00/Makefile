@@ -11,19 +11,25 @@ OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
 all: $(OBJ_DIR) $(NAME)
 
 $(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+	@echo "\033[34mCreating obj/ directory...\033[0m"
+	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+	@echo "\033[32mCompiling $<...\033[0m"
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	@echo "\033[33mCreating executable $(NAME)...\033[0m"
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	@echo "\033[35mCompilation complete!\033[0m"
 
 clean:
-	rm -rf $(OBJ_DIR)
+	@echo "\033[31mRemoving object files...\033[0m"
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	rm -f $(NAME)
+	@echo "\033[31mRemoving executable $(NAME)...\033[0m"
+	@rm -f $(NAME)
 
 re: fclean all
 
